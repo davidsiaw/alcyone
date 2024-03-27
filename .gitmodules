@@ -1,3 +1,18 @@
 [submodule "lib/SDL"]
 	path = lib/SDL
 	url = https://github.com/libsdl-org/SDL
+[submodule "lib/SDL_image"]
+	path = lib/SDL_image
+	url = https://github.com/libsdl-org/SDL_image
+[submodule "lib/SDL_ttf"]
+	path = lib/SDL_ttf
+	url = https://github.com/libsdl-org/SDL_ttf
+[submodule "lib/SDL_mixer"]
+	path = lib/SDL_mixer
+	url = https://github.com/libsdl-org/SDL_mixer
+[submodule "lib/sqlite"]
+	path = lib/sqlite
+	url = https://github.com/sqlite/sqlite
+[submodule "lib/mruby-cpp"]
+	path = lib/mruby-cpp
+	url = https://github.com/davidsiaw/mruby-cpp

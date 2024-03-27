@@ -11,7 +11,7 @@ obj/sdl:
 	mkdir -p obj/sdl
 
 obj/sdl/lib/libSDL2.la: obj/sdl
-	cd lib/SDL && \
+	@cd lib/SDL && \
 	./configure --prefix=$(PWD)/obj/sdl -q && \
 	make clean && \
 	make install && \

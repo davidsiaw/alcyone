@@ -1,63 +1,25 @@
-#include <SDL2/SDL.h>
 #include <stdio.h>
 
 #include <sqlite3.h>
 
-#include <mruby.hpp>
-
-class Window
-{
-
-public:
-  std::string title;
-  int width, height;
-
-  Window(int width, int height) : width(width), height(height)
-  {
-  }
-
-  void run()
-  {
-    SDL_Window * window;
-    SDL_Surface* screenSurface;
-    window = SDL_CreateWindow(
-            title.c_str(),
-            SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-            width, height,
-            SDL_WINDOW_SHOWN
-            );
-
-    screenSurface = SDL_GetWindowSurface(window);
-
-    bool quit = false;
-    SDL_Event event;
-
-    while (!quit) {
-      while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT) {
-          quit = true;
-        };
-      }
-      SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xff, 0x00, 0xf0));
-      SDL_UpdateWindowSurface(window);
-    }
-
-    SDL_DestroyWindow(window);
-  }
-
-  ~Window()
-  {
-  }
-
-private:
-};
+#include "window.hpp"
 
 // sets up the VM for use
 void bind_classes(mruby::VM vm)
 {
-  auto cls = vm.create_class<Window, int, int>("Window");
-  cls->bind_instance_method("run", &Window::run);
-  cls->bind_instance_variable("title", &Window::title);
+  auto color_class = vm.create_class<Color>("Color");
+  color_class->bind_instance_variable("r", &Color::r);
+  color_class->bind_instance_variable("g", &Color::g);
+  color_class->bind_instance_variable("b", &Color::b);
+  color_class->bind_instance_variable("a", &Color::a);
+  
+  auto window_class = vm.create_class<Window, int, int>("Window");
+  window_class->bind_instance_method("run", &Window::run);
+  window_class->bind_instance_variable("title", &Window::title);
+  window_class->bind_instance_variable("r", &Window::r);
+  window_class->bind_instance_variable("g", &Window::g);
+  window_class->bind_instance_variable("b", &Window::b);
+
 }
 
 int main(int argc, char* args[])

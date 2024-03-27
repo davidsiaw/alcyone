@@ -19,7 +19,7 @@ CC:=$(CPP) $(CPPFLAGS)
 all: bin/alcyone
 
 run: bin/alcyone
-	cd bin && ./alcyone
+	cd assets && ../bin/alcyone
 
 bin:
 	mkdir -p bin

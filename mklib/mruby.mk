@@ -7,7 +7,10 @@ INCLUDE_FLAGS:=$(INCLUDE_FLAGS) -isystem obj/mruby/include
 LIBRARY_FLAGS:=$(LIBRARY_FLAGS) -Lobj/mruby/lib
 LINKER_FLAGS:=$(LINKER_FLAGS) -lmruby
 
-obj/mruby:
+lib/mruby-cpp/mruby:
+	git submodule update --init --recursive
+	
+obj/mruby: lib/mruby-cpp/mruby
 	mkdir -p obj/mruby
 
 obj/mruby/lib/libmruby.a: obj/mruby

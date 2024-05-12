@@ -11,7 +11,7 @@ LINKER_FLAGS:=
 SOURCES:=$(shell find src -type f -name '*.cpp')
 OBJECTS:=$(patsubst src/%.cpp,obj/%.o,$(SOURCES))
 
-CPPFLAGS:=-Wall -Werror -Wpedantic -g
+CPPFLAGS:=-Wall -Werror -Wpedantic -g -std=c++11 -stdlib=libc++ 
 CPP:=g++
 
 CC:=$(CPP) $(CPPFLAGS)
@@ -50,3 +50,4 @@ clean: $(CLEAN_TARGETS)
 	rm -rf obj
 
 .PHONY: clean run
+

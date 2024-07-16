@@ -14,7 +14,7 @@ obj/sdl/lib/libSDL2.la: obj/sdl
 	@cd lib/SDL && \
 	./configure --prefix=$(PWD)/obj/sdl -q && \
 	make clean && \
-	make install && \
+	make install -j6 && \
 	./libtool --finish $(PWD)/obj/sdl/lib
 
 clean_sdl:
